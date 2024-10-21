@@ -1,11 +1,11 @@
-package com.fchazal.radiofrance.brands.presentation
+package com.fchazal.radiofrance.brands
 
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fchazal.radiofrance.BrandsQuery
 import com.fchazal.radiofrance.brands.domain.interactor.GetBrandsUseCase
 import com.fchazal.radiofrance.brands.domain.model.BrandsResults
+import com.fchazal.radiofrance.brands.presentation.BrandsUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

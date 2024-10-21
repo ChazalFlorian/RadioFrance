@@ -21,6 +21,7 @@ compose-livedata = "1.7.4"
 android-arch-core = "2.2.0"
 lifecycle-runtime = "2.8.6"
 apollo = "4.0.1"
+navigation = "2.7.0-alpha07"
 
 
 [libraries]
@@ -39,7 +40,7 @@ core-runtime = { module = "androidx.arch.core:core-runtime", version.ref = "andr
 core-testing = { module = "androidx.arch.core:core-testing", version.ref = "android-arch-core" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime" }
 apollo = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
-
+navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

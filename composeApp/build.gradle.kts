@@ -39,6 +39,7 @@ kotlin {
             implementation(libs.bundles.core)
             implementation(libs.bundles.coroutines)
             implementation(libs.bundles.compose)
+            implementation(libs.navigation)
         }
     }
 }

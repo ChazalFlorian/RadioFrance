@@ -7,7 +7,8 @@ import org.koin.dsl.module
 val applicationModule = module {
     factory {
         ApolloClient.Builder()
-            .serverUrl("openapi.radiofrance.fr/v1/graphql")
+            .serverUrl("https://openapi.radiofrance.fr/v1/graphql")
             .addHttpHeader("x-token", BuildConfig.API_KEY)
+            .build()
     }
 }
