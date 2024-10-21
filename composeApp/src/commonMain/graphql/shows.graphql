@@ -1,0 +1,9 @@
+query ShowsQuery($id: StationsEnum!) {
+    shows(station: $id) {
+        edges {
+          node {
+              title
+          }
+        }
+    }
+}

@@ -5,7 +5,8 @@ import com.fchazal.radiofrance.brands.presentation.view.BrandsListView
 
 @Composable
 fun BrandsView(
-    state: State<BrandsResultState>
+    state: State<BrandsResultState>,
+    onClick: (String) -> Unit
 ) {
     when (val res = state.value) {
         is BrandsResultState.Loading -> {
@@ -15,7 +16,7 @@ fun BrandsView(
 
         }
         is BrandsResultState.Success -> {
-            BrandsListView(res.brands)
+            BrandsListView(res.brands, onClick)
         }
     }
 }
