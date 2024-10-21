@@ -1,12 +1,14 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.apollo)
 }
 
 kotlin {
@@ -21,7 +23,7 @@ kotlin {
         
         androidMain.dependencies {
             implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
+            implementation(libs.bundles.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -32,6 +34,11 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.koin.android)
+            implementation(libs.apollo)
+            implementation(libs.bundles.core)
+            implementation(libs.bundles.coroutines)
+            implementation(libs.bundles.compose)
         }
     }
 }
@@ -39,6 +46,7 @@ kotlin {
 android {
     namespace = "com.fchazal.radiofrance"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
+    buildFeatures.buildConfig = true
 
     defaultConfig {
         applicationId = "com.fchazal.radiofrance"
@@ -46,6 +54,18 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        val keystoreFile = project.rootProject.file("./local.properties")
+        val properties = Properties()
+        properties.load(keystoreFile.inputStream())
+
+        val apiKey = properties.getProperty("RADIO_FRANCE_API_KEY") ?: ""
+
+        buildConfigField(
+            type = "String",
+            name = "API_KEY",
+            value = apiKey
+        )
     }
     packaging {
         resources {
@@ -65,5 +85,7 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    testImplementation(libs.bundles.test)
+    testImplementation(libs.bundles.androidtest)
 }
 
