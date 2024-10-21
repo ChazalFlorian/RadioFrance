@@ -1,16 +1,18 @@
 package com.fchazal.radiofrance
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.core.os.bundleOf
-import androidx.navigation.*
+import androidx.navigation.NavHostController
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.fchazal.radiofrance.brands.BrandsView
 import com.fchazal.radiofrance.brands.BrandsViewModel
@@ -26,7 +28,7 @@ import org.koin.java.KoinJavaComponent.inject
 @Composable
 @Preview
 fun App(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
 ) {
     MaterialTheme {
         NavHost(
@@ -57,7 +59,7 @@ fun App(
             }
             composable(route = RadioFranceScreen.Shows.name) {
                 val id = navController.currentBackStackEntry?.arguments?.getString("id")
-                if(id.isNullOrBlank()) {
+                if (id.isNullOrBlank()) {
                     navController.popBackStack(RadioFranceScreen.Brands.name, false)
                 } else {
                     val viewModel: ShowsViewModel by inject(ShowsViewModel::class.java)

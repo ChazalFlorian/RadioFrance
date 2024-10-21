@@ -9,7 +9,7 @@ interface GetBrandsUseCase {
 }
 
 class GetBrandsUseCaseImpl(
-    private val repository: BrandsRepository
+    private val repository: BrandsRepository,
 ) : GetBrandsUseCase {
     override suspend fun getBrands(): BrandsResults {
         repository.brands().let { response ->
@@ -24,7 +24,7 @@ class GetBrandsUseCaseImpl(
     }
 
     private fun List<BrandsQuery.Brand?>?.toBrandsResult(): List<BrandsQuery.Brand> {
-        return if(!this.isNullOrEmpty()) {
+        return if (!this.isNullOrEmpty()) {
             this.requireNoNulls()
         } else {
             listOf()

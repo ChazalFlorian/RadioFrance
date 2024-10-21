@@ -2,19 +2,18 @@ package com.fchazal.radiofrance.shows.domain.interactor
 
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.exception.ApolloHttpException
-import com.fchazal.radiofrance.shows.data.repository.ShowsRepositoryImpl
 import com.apollographql.apollo.testing.*
-import com.fchazal.radiofrance.utils.CoroutineTestRule
-import io.mockk.impl.annotations.MockK
-import org.junit.Assert.*
 import com.apollographql.mockserver.MockResponse
 import com.apollographql.mockserver.MockServer
-import com.fchazal.radiofrance.BrandsQuery
 import com.fchazal.radiofrance.ShowsQuery
+import com.fchazal.radiofrance.shows.data.repository.ShowsRepositoryImpl
 import com.fchazal.radiofrance.type.StationsEnum
+import com.fchazal.radiofrance.utils.CoroutineTestRule
 import io.mockk.MockKAnnotations.init
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.test.runTest
 import org.junit.After
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
