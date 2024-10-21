@@ -1,16 +1,13 @@
 package com.fchazal.radiofrance.brands
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import com.fchazal.radiofrance.brands.presentation.view.BrandsListView
 
 @Composable
 fun BrandsView(
-    viewModel: BrandsViewModel
+    state: State<BrandsResultState>
 ) {
-    val state = viewModel.uiState.collectAsState().value
-
-    when (state) {
+    when (val res = state.value) {
         is BrandsResultState.Loading -> {
             
         }
@@ -18,7 +15,7 @@ fun BrandsView(
 
         }
         is BrandsResultState.Success -> {
-            BrandsListView(state.brands)
+            BrandsListView(res.brands)
         }
     }
 }

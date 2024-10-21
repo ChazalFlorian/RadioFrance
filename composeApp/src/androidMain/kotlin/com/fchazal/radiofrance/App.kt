@@ -31,8 +31,9 @@ fun App(
             composable(route = RadioFranceScreen.Brands.name) {
                 val viewModel: BrandsViewModel by inject(BrandsViewModel::class.java)
                 getBrands(viewModel = viewModel)
+                val state = remember { mutableStateOf(viewModel.uiState) }
                 BrandsView(
-                    viewModel = viewModel
+                    state = state.value.collectAsState()
                 )
             }
         }

@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.fchazal.radiofrance.BrandsQuery
 import com.fchazal.radiofrance.brands.domain.interactor.GetBrandsUseCase
 import com.fchazal.radiofrance.brands.domain.model.BrandsResults
-import com.fchazal.radiofrance.brands.presentation.BrandsUI
+import com.fchazal.radiofrance.brands.presentation.model.BrandsUI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,11 +30,13 @@ class BrandsViewModel (
         viewModelScope.launch {
             when(val result = useCase.getBrands()) {
                 is BrandsResults.Error -> {
-                    BrandsResultState.Error(error = result.error)
+                    _uiState.emit(BrandsResultState.Error(error = result.error))
                 }
                 is BrandsResults.Success -> {
-                    BrandsResultState.Success(
-                        brands = result.brands.toBrandsUI()
+                    _uiState.emit(
+                        BrandsResultState.Success(
+                            brands = result.brands.toBrandsUI()
+                        )
                     )
                 }
             }
@@ -47,6 +49,7 @@ private fun List<BrandsQuery.Brand>.toBrandsUI(): List<BrandsUI> {
         BrandsUI(
             id = it.id,
             title = it.title,
+            baseline = it.baseline ?: "",
             description = it.description ?: ""
         )
     }

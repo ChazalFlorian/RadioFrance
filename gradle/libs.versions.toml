@@ -21,6 +21,7 @@ compose-livedata = "1.7.4"
 android-arch-core = "2.2.0"
 lifecycle-runtime = "2.8.6"
 apollo = "4.0.1"
+apollo-mock = "0.0.1"
 navigation = "2.7.0-alpha07"
 
 
@@ -40,6 +41,8 @@ core-runtime = { module = "androidx.arch.core:core-runtime", version.ref = "andr
 core-testing = { module = "androidx.arch.core:core-testing", version.ref = "android-arch-core" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime" }
 apollo = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
+apollo-mock = { module = "com.apollographql.mockserver:apollo-mockserver", version.ref = "apollo-mock"}
+apollo-test = { module = "com.apollographql.apollo:apollo-testing-support", version.ref = "apollo" }
 navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
@@ -62,7 +65,7 @@ core = ["androidx-core-ktx", "core-common", "core-runtime", "core-testing", "lif
 coroutines = ["coroutine-core", "coroutine-android", "coroutine-test"]
 compose = ["androidx-activity-compose", "compose-ui", "compose-graphics", "compose-tooling", "compose-runtime-livedata"]
 androidtest = ["androidx-espresso-core", "junit-test"]
-test = ["junit", "mockk", "coroutine-test", "koin-test", "androidx-test-junit", "kotlin-test", "kotlin-test-junit"]
+test = ["junit", "mockk", "coroutine-test", "koin-test", "androidx-test-junit", "kotlin-test", "kotlin-test-junit", "apollo-mock", "apollo-test"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
