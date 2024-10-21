@@ -8,10 +8,13 @@ import androidx.compose.runtime.Composable
 import com.fchazal.radiofrance.brands.presentation.model.BrandsUI
 
 @Composable
-fun BrandsListView(brands: List<BrandsUI>) {
+fun BrandsListView(
+    brands: List<BrandsUI>,
+    onClick: (String) -> Unit
+    ) {
     LazyVerticalGrid(columns = GridCells.Fixed(1)){
         itemsIndexed(brands) { index, brand ->
-            BrandsListItemView(brand, (index % 2 == 0))
+            BrandsListItemView(brand, (index % 2 == 0), onClick)
         }
     }
 }
