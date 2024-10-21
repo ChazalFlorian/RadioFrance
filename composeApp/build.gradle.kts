@@ -43,6 +43,12 @@ kotlin {
     }
 }
 
+apollo {
+    service("service") {
+      packageName.set("com.fchazal.radiofrance")
+    }
+  }
+
 android {
     namespace = "com.fchazal.radiofrance"
     compileSdk = libs.versions.android.compileSdk.get().toInt()

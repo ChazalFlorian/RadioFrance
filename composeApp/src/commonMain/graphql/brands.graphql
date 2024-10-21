@@ -1,0 +1,9 @@
+query BrandsQuery {
+    brands {
+        id
+        title
+        description
+        playerUrl
+        liveStream
+    }
+}
