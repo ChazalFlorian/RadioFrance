@@ -39,9 +39,16 @@ kotlin {
             implementation(libs.bundles.core)
             implementation(libs.bundles.coroutines)
             implementation(libs.bundles.compose)
+            implementation(libs.navigation)
         }
     }
 }
+
+apollo {
+    service("service") {
+      packageName.set("com.fchazal.radiofrance")
+    }
+  }
 
 android {
     namespace = "com.fchazal.radiofrance"

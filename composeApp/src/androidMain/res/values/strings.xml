@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RadioFrance</string>
+    <string name="brands_screen_title">Brands</string>
+    <string name="show_screen_title">Shows</string>
 </resources>
