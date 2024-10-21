@@ -14,11 +14,11 @@ import com.fchazal.radiofrance.brands.presentation.model.BrandsUI
 fun BrandsListItemView(
     brand: BrandsUI,
     isEven: Boolean,
-    onClick: (String) -> Unit
+    onClick: (String) -> Unit,
 ) {
     Row(
         modifier = Modifier.background(
-            if(isEven) Color.LightGray else Color.Gray
+            if (isEven) Color.LightGray else Color.Gray
         ).clickable {
             onClick(brand.id)
         }

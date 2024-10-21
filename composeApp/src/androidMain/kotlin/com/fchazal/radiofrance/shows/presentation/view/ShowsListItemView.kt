@@ -12,14 +12,14 @@ import com.fchazal.radiofrance.shows.presentation.model.ShowUI
 @Composable
 fun ShowListItemView(
     show: ShowUI,
-    isEven: Boolean
+    isEven: Boolean,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-            if(isEven) Color.LightGray else Color.Gray
-        )
+                if (isEven) Color.LightGray else Color.Gray
+            )
     ) {
         Text(show.title)
     }

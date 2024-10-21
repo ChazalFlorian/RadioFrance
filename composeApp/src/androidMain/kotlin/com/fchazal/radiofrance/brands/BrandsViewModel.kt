@@ -12,26 +12,27 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 sealed class BrandsResultState {
-    data object Loading: BrandsResultState()
-    data class Success(val brands: List<BrandsUI>): BrandsResultState()
+    data object Loading : BrandsResultState()
+    data class Success(val brands: List<BrandsUI>) : BrandsResultState()
 
     data class Error(val error: String) : BrandsResultState()
 }
 
-class BrandsViewModel (
-    private val useCase: GetBrandsUseCase
-): ViewModel() {
+class BrandsViewModel(
+    private val useCase: GetBrandsUseCase,
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow<BrandsResultState>(BrandsResultState.Loading)
-    val uiState : StateFlow<BrandsResultState>
+    val uiState: StateFlow<BrandsResultState>
         get() = _uiState.asStateFlow()
 
     suspend fun getBrands() {
         viewModelScope.launch {
-            when(val result = useCase.getBrands()) {
+            when (val result = useCase.getBrands()) {
                 is BrandsResults.Error -> {
                     _uiState.emit(BrandsResultState.Error(error = result.error))
                 }
+
                 is BrandsResults.Success -> {
                     _uiState.emit(
                         BrandsResultState.Success(

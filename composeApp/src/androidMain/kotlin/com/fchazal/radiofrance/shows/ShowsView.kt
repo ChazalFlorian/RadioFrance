@@ -6,15 +6,15 @@ import com.fchazal.radiofrance.shows.presentation.view.ShowsListView
 
 @Composable
 fun ShowsView(
-    state: State<ShowsResultState>
+    state: State<ShowsResultState>,
 ) {
-    when(val res = state.value) {
+    when (val res = state.value) {
         is ShowsResultState.Error -> {
-
         }
+
         ShowsResultState.Loading -> {
-
         }
+
         is ShowsResultState.Success -> {
             ShowsListView(res.shows)
         }

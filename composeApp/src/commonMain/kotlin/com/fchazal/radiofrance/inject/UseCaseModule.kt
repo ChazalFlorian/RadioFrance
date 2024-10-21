@@ -7,14 +7,14 @@ import com.fchazal.radiofrance.shows.domain.interactor.GetShowByBrandIdUseCaseIm
 import org.koin.dsl.module
 
 val useCaseModule = module {
-        single<GetBrandsUseCase> {
-                GetBrandsUseCaseImpl(
-                    repository = get()
-                )
-        }
+    single<GetBrandsUseCase> {
+        GetBrandsUseCaseImpl(
+            repository = get()
+        )
+    }
     single<GetShowByBrandIdUseCase> {
-            GetShowByBrandIdUseCaseImpl(
-                repository = get()
-            )
+        GetShowByBrandIdUseCaseImpl(
+            repository = get()
+        )
     }
 }

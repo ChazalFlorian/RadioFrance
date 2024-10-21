@@ -92,6 +92,8 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    androidTestImplementation(libs.bundles.test)
+    androidTestImplementation(libs.bundles.androidtest)
     testImplementation(libs.bundles.test)
     testImplementation(libs.bundles.androidtest)
 }
